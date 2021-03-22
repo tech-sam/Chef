@@ -56,7 +56,8 @@ defmodule Chef.DataProvider do
   alias Chef.HttpClient, as: HttpClient
   def start_data_fetch do
     IO.puts("start data fecting")
-    HttpClient.get("http://forzaassignment.forzafootball.com:8080/feed/matchbeam")
+    data = HttpClient.get("http://forzaassignment.forzafootball.com:8080/feed/matchbeam")
+    IO.puts data
     # path = :code.lib_dir(:elixir, :ebin)
     # mods = Protocol.extract_impls(:MatchDataProvider, [path])
     # IO.inspect(mods)
