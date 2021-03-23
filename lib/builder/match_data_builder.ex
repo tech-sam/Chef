@@ -5,7 +5,7 @@ defmodule Chef.MatchDataBuilder do
     do: %{matchdata | home_team: home_team, away_team: away_team}
 
   def teams(matchdata, teams) do
-    [home_team, away_team] = String.split(teams, "-")
+    [home_team, away_team] = String.split(teams, ~r/\s-\s/)
     %{matchdata | home_team: String.trim(home_team), away_team: String.trim(away_team)}
   end
 

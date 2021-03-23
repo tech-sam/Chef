@@ -23,6 +23,7 @@ defmodule Chef.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.8"},
+      {:poison, "~> 4.0.1"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"}
     ]
