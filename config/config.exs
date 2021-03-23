@@ -9,7 +9,6 @@ config :chef,
 
 config :chef,
   # unit milliseconds
-  data_fetch_interval: 2000,
-  data_providers: [:MatchBeam, :Test2]
+  data_fetch_interval: 2000
 
 config :chef, ecto_repos: [Chef.Repo]
