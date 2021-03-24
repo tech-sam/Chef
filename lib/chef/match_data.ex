@@ -14,6 +14,12 @@ defmodule Chef.MatchData do
   def changeset(match_data, params \\ %{}) do
     match_data
     |> Ecto.Changeset.cast(params, [:home_team, :away_team, :provider, :kickoff_at, :created_at])
-    |> Ecto.Changeset.validate_required([:home_team, :away_team, :provider, :kickoff_at, :created_at])
+    |> Ecto.Changeset.validate_required([
+      :home_team,
+      :away_team,
+      :provider,
+      :kickoff_at,
+      :created_at
+    ])
   end
 end

@@ -9,6 +9,18 @@ config :chef,
 
 config :chef,
   # unit milliseconds
-  data_fetch_interval: 5000
+  data_fetch_interval: 1000
 
 config :chef, ecto_repos: [Chef.Repo]
+
+config :logger,
+  level: :debug,
+  handle_otp_reports: true,
+  handle_sasl_reports: true,
+  utc_log: true,
+  truncate: :infinity,
+  backends: [:console],
+  metadata: :all,
+  compile_time_purge_matching: [
+    [level_lower_than: :info]
+  ]

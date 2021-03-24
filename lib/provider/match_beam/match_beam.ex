@@ -1,4 +1,5 @@
 defmodule Chef.DataProvider.MatchBeam do
+  require Logger
   alias Chef.HttpClient, as: HttpClient
   import Chef.DataProvider.DataRepo
   import Chef.MatchDataBuilder
@@ -9,18 +10,21 @@ defmodule Chef.DataProvider.MatchBeam do
 
   @provider_end_point "http://forzaassignment.forzafootball.com:8080/feed/matchbeam"
 
-  @impl true
-  def fetch_match_data do
-    response = HttpClient.get(@provider_end_point)
-    matches = response["matches"]
+  @impl Chef.DataProvider
+  def fetch_match_data(_args) do
+    case HttpClient.get(@provider_end_point) do
+      {:ok, response} ->
+        matches = response["matches"]
 
-    Enum.map(matches, fn match ->
-      match
-      |> build_match
-      |> persist_match_data
-    end)
+        Enum.map(matches, fn match ->
+          match
+          |> build_match
+          |> persist_match_data
+        end)
 
-    {:ok}
+      {:error, reason} ->
+        Logger.error("error while fetching data for provider #{@provider} due to  #{reason}")
+    end
   end
 
   defp build_match(data) do
