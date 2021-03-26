@@ -11,7 +11,7 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
 
 **Flow & Context**
 
-![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rr5yu18jvfe8yunxgcdy.jpg)
+![Chef flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ube6xymgp3e0cjel96hg.jpg)
 
 **Appendix**
 * libraries
@@ -20,6 +20,6 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
     * postgrex
     * ecto_sql
     * plug_cowboy
-    
+
 
 
