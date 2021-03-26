@@ -9,7 +9,7 @@ config :chef,
 
 config :chef,
   # unit milliseconds
-  data_fetch_interval: 1000
+  data_fetch_interval: 30000
 
 config :chef, ecto_repos: [Chef.Repo]
 
