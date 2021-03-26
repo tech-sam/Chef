@@ -9,9 +9,6 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
 * Aggregation of Services Pattern
 * Builder pattern
 
-**Flow & Context**
-
-![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2jf3t5bjdwidwjm5je4m.jpeg)
 
 **Usage**
 
@@ -45,4 +42,7 @@ config :chef,
     * plug_cowboy
 
 
+**Flow & Context**
+
+![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2jf3t5bjdwidwjm5je4m.jpeg)
 
