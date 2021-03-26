@@ -12,6 +12,30 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
 **Flow & Context**
 
 ![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2jf3t5bjdwidwjm5je4m.jpeg)
+
+**Usage**
+
+* mix run --no-halt  (to run main application)
+* mix test (validate test suit it will start mock cowboy server)
+* default postgres instance is used for the project can be configured from config file ```config/config.exs```
+```
+config :chef,
+       Chef.Repo,
+       database: "chef_repo",
+       username: "postgres",
+       password: "postgres",
+       hostname: "localhost"
+```
+* data fetch interval can be modified using config file ```config/config.exs``` as
+```
+config :chef,
+  # unit milliseconds
+  data_fetch_interval: 30000
+```
+* mix ecto.create (to create the chef_repo database)
+* mix ecto.migrate (to create match_data table to store the normalized data)
+
+
 **Appendix**
 * libraries
     * httpoison
