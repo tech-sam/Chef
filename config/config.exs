@@ -1,0 +1,26 @@
+import Config
+
+config :chef,
+       Chef.Repo,
+       database: "chef_repo",
+       username: "postgres",
+       password: "postgres",
+       hostname: "localhost"
+
+config :chef,
+  # unit milliseconds
+  data_fetch_interval: 1000
+
+config :chef, ecto_repos: [Chef.Repo]
+
+config :logger,
+  level: :debug,
+  handle_otp_reports: true,
+  handle_sasl_reports: true,
+  utc_log: true,
+  truncate: :infinity,
+  backends: [:console],
+  metadata: :all,
+  compile_time_purge_matching: [
+    [level_lower_than: :info]
+  ]
