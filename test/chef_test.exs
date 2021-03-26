@@ -5,7 +5,7 @@ defmodule ChefTest do
   doctest Chef
 
   test "create match data repo for FastBall provider when success" do
-    end_point = "localhost:8081/feed/fastball"
+    end_point = Application.fetch_env!(:chef, Chef.DataProvider)[:fastball]
     {:ok, response} = HttpClient.get(end_point)
     match = response["matches"]
 
@@ -23,7 +23,7 @@ defmodule ChefTest do
   end
 
   test "create match data repo for MatchBeam provider when success" do
-    end_point = "localhost:8081/feed/matchbeam"
+    end_point = Application.fetch_env!(:chef, Chef.DataProvider)[:matchbeam]
     {:ok, response} = HttpClient.get(end_point)
     match = response["matches"]
 

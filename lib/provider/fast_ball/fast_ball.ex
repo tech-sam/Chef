@@ -9,7 +9,7 @@ defmodule Chef.DataProvider.FastBall do
 
   @provider "FastBall"
 
-  @provider_end_point "http://forzaassignment.forzafootball.com:8080/feed/fastball"
+  @provider_end_point Application.fetch_env!(:chef, Chef.DataProvider)[:fastball]
 
   @impl Chef.DataProvider
   def fetch_match_data(args) do

@@ -8,7 +8,7 @@ defmodule Chef.DataProvider.MatchBeam do
 
   @provider "MatchBeam"
 
-  @provider_end_point "http://forzaassignment.forzafootball.com:8080/feed/matchbeam"
+  @provider_end_point Application.fetch_env!(:chef, Chef.DataProvider)[:matchbeam]
 
   @impl Chef.DataProvider
   def fetch_match_data(_args) do

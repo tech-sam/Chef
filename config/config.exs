@@ -24,3 +24,10 @@ config :logger,
   compile_time_purge_matching: [
     [level_lower_than: :info]
   ]
+
+config :chef,
+       Chef.DataProvider,
+       matchbeam: "http://forzaassignment.forzafootball.com:8080/feed/matchbeam",
+       fastball: "http://forzaassignment.forzafootball.com:8080/feed/fastball"
+
+import_config "#{Mix.env()}.exs"
