@@ -12,7 +12,7 @@ defmodule Chef.DataProvider do
   end
 
   defp providers() do
-    [ FastBall]
+    [MatchBeam, FastBall]
   end
 
   @doc """

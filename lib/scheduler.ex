@@ -18,7 +18,6 @@ defmodule Chef.Scheduler do
 
   def handle_info(:start_data_fetch, state) do
     DataProvider.start_data_fetch(provider_args())
-    #DataProvider.start_data_fetch(%{})
     schedule_data_fetch()
     {:noreply, state}
   end

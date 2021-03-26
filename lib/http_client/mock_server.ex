@@ -26,10 +26,17 @@ defmodule Chef.MockServer do
   end
 
   get "/feed/matchbeam" do
-    IO.inspect("---coming to mock----")
-    IO.inspect(conn.params)
-    response = %{status_code: 200, body: "yolo"}
-    success(conn, response)
+    matchbeam_response = %{
+      matches: [
+        %{
+          teams: "Arsenal - Chelsea FC",
+          created_at: 1_616_723_821,
+          kickoff_at: "2021-04-13T01:00:00Z"
+        }
+      ]
+    }
+
+    success(conn, matchbeam_response)
   end
 
   defp success(conn, body) do

@@ -15,7 +15,7 @@ defmodule Chef.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Chef, [env: Mix.env()]},
+      mod: {Chef, [env: Mix.env()]}
     ]
   end
 
