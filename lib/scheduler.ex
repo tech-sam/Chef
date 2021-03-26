@@ -1,4 +1,8 @@
 defmodule Chef.Scheduler do
+  @moduledoc """
+  Schedule the data fetching job for all match providers based on configured fetch interval.
+  """
+
   use GenServer
   alias Chef.DataProvider, as: DataProvider
   import Chef.ProviderArgsBuilder
@@ -14,6 +18,7 @@ defmodule Chef.Scheduler do
 
   def handle_info(:start_data_fetch, state) do
     DataProvider.start_data_fetch(provider_args())
+    #DataProvider.start_data_fetch(%{})
     schedule_data_fetch()
     {:noreply, state}
   end
@@ -26,7 +31,15 @@ defmodule Chef.Scheduler do
     Application.fetch_env!(:chef, :data_fetch_interval)
   end
 
-  defp provider_args() do
+  @doc """
+    Prepare the common data provider argument for response modification using the ProviderArgsBuilder module.
+
+  ## Examples
+
+      %Chef.ProviderArgs{last_checked_at:1543741200}
+
+  """
+  def provider_args() do
     current_time_stamp = DateTime.to_unix(DateTime.utc_now())
 
     build()
