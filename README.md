@@ -1,21 +1,14 @@
-# Chef
+> "The simpler the food, the harder it is to prepare well" - Joël Robuchon.
 
-**TODO: Add description**
+**Chef**
+Chef is a data scheduling and normalization service built on [Mix Elixir](https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html). 
+Just like a chef in a restaurant collects raw ingredients and converts them into recipes, Chef fetches data from multiple match providers, normalized it and persists it into the `Postgre database`.
 
-## Installation
+**Design**
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `chef` to your list of dependencies in `mix.exs`:
+* Aggregation of Services Pattern
+* Builder pattern
 
-```elixir
-def deps do
-  [
-    {:chef, "~> 0.1.0"}
-  ]
-end
-```
+**Flow & Context**
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/chef](https://hexdocs.pm/chef).
-
+![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rr5yu18jvfe8yunxgcdy.jpg)
