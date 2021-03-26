@@ -11,8 +11,7 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
 
 **Flow & Context**
 
-![Chef flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3vxpvvcthga5mhnzgtdr.jpeg)
-
+![Chef Flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2jf3t5bjdwidwjm5je4m.jpeg)
 **Appendix**
 * libraries
     * httpoison
