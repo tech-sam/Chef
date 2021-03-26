@@ -14,6 +14,7 @@ Just like a chef in a restaurant collects raw ingredients and converts them into
 
 * mix run --no-halt  (to run main application)
 * mix test (validate test suit it will start mock cowboy server)
+* mock cowboy server endpoint configuration can be configured from config file ```config/test.exs```
 * default postgres instance is used for the project can be configured from config file ```config/config.exs```
 ```
 config :chef,
