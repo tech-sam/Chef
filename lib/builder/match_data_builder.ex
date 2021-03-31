@@ -1,4 +1,7 @@
 defmodule Chef.MatchDataBuilder do
+  @moduledoc """
+  Match data builder for data providers , normalized the data in a unified format to persist.
+  """
   def build, do: %Chef.MatchData{}
 
   def teams(matchdata, home_team, away_team),
