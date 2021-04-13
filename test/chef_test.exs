@@ -2,10 +2,13 @@ defmodule ChefTest do
   use ExUnit.Case, async: false
   alias Chef.HttpClient, as: HttpClient
   import Chef.MatchDataBuilder
+  @providers Application.fetch_env!(:chef, :providers)
   doctest Chef
 
   test "create match data repo for FastBall provider when success" do
-    end_point = Application.fetch_env!(:chef, Chef.DataProvider)[:fastball]
+    end_point =
+      Enum.find(@providers, fn config -> config.provider == Chef.DataProvider.FastBall end).url
+
     {:ok, response} = HttpClient.get(end_point)
     match = response["matches"]
 
@@ -23,7 +26,9 @@ defmodule ChefTest do
   end
 
   test "create match data repo for MatchBeam provider when success" do
-    end_point = Application.fetch_env!(:chef, Chef.DataProvider)[:matchbeam]
+    end_point =
+      Enum.find(@providers, fn config -> config.provider == Chef.DataProvider.MatchBeam end).url
+
     {:ok, response} = HttpClient.get(end_point)
     match = response["matches"]
 

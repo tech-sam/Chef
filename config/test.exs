@@ -1,6 +1,13 @@
 import Config
 
 config :chef,
-       Chef.DataProvider,
-       matchbeam: "localhost:8081/feed/matchbeam",
-       fastball: "localhost:8081/feed/fastball"
+  providers: [
+    %{
+      provider: Chef.DataProvider.MatchBeam,
+      url: "localhost:8081/feed/matchbeam"
+    },
+    %{
+      provider: Chef.DataProvider.FastBall,
+      url: "localhost:8081/feed/fastball"
+    }
+  ]

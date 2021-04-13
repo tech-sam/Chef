@@ -9,12 +9,9 @@ defmodule Chef.DataProvider.FastBall do
 
   @provider "FastBall"
 
-  @provider_end_point Application.fetch_env!(:chef, Chef.DataProvider)[:fastball]
-
   @impl Chef.DataProvider
   def fetch_match_data(args) do
     end_point = get_provider_endpoint(args)
-
     case HttpClient.get(end_point) do
       {:ok, response} ->
         matches = response["matches"]
@@ -40,7 +37,11 @@ defmodule Chef.DataProvider.FastBall do
 
   defp get_provider_endpoint(args) do
     if Map.has_key?(args, :last_checked_at),
-      do: "#{@provider_end_point}?last_checked_at=#{args.last_checked_at}",
-      else: @provider_end_point
+      do: "#{args.end_point}?last_checked_at=#{args.last_checked_at}",
+      else: args.end_point
+  end
+
+  def test(url) do
+    IO.inspect("fastball test url #{url}")
   end
 end

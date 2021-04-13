@@ -9,7 +9,7 @@ config :chef,
 
 config :chef,
   # unit milliseconds
-  data_fetch_interval: 30000
+  data_fetch_interval: 1000
 
 config :chef, ecto_repos: [Chef.Repo]
 
@@ -26,8 +26,15 @@ config :logger,
   ]
 
 config :chef,
-       Chef.DataProvider,
-       matchbeam: "http://forzaassignment.forzafootball.com:8080/feed/matchbeam",
-       fastball: "http://forzaassignment.forzafootball.com:8080/feed/fastball"
+  providers: [
+    %{
+      provider: Chef.DataProvider.MatchBeam,
+      url: "http://forzaassignment.forzafootball.com:8080/feed/matchbeam"
+    },
+    %{
+      provider: Chef.DataProvider.FastBall,
+      url: "http://forzaassignment.forzafootball.com:8080/feed/fastball"
+    }
+  ]
 
 import_config "#{Mix.env()}.exs"

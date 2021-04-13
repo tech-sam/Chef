@@ -8,11 +8,9 @@ defmodule Chef.DataProvider.MatchBeam do
 
   @provider "MatchBeam"
 
-  @provider_end_point Application.fetch_env!(:chef, Chef.DataProvider)[:matchbeam]
-
   @impl Chef.DataProvider
-  def fetch_match_data(_args) do
-    case HttpClient.get(@provider_end_point) do
+  def fetch_match_data(args) do
+    case HttpClient.get(args.end_point) do
       {:ok, response} ->
         matches = response["matches"]
 
