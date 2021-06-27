@@ -4,11 +4,11 @@ defmodule Chef.DataProvider.MatchBeam do
   import Chef.DataProvider.DataRepo
   import Chef.MatchDataBuilder
 
-  @behaviour Chef.DataProvider
+  @behaviour Chef.Provider
 
   @provider "MatchBeam"
 
-  @impl Chef.DataProvider
+  @impl Chef.Provider
   def fetch_match_data(args) do
     case HttpClient.get(args.end_point) do
       {:ok, response} ->

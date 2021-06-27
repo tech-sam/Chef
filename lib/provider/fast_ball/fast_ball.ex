@@ -5,11 +5,11 @@ defmodule Chef.DataProvider.FastBall do
 
   import Chef.MatchDataBuilder
 
-  @behaviour Chef.DataProvider
+  @behaviour Chef.Provider
 
   @provider "FastBall"
 
-  @impl Chef.DataProvider
+  @impl Chef.Provider
   def fetch_match_data(args) do
     end_point = get_provider_endpoint(args)
     case HttpClient.get(end_point) do
