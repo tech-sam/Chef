@@ -12,6 +12,7 @@ defmodule Chef.DataProvider.FastBall do
   @impl Chef.Provider
   def fetch_match_data(args) do
     end_point = get_provider_endpoint(args)
+
     case HttpClient.get(end_point) do
       {:ok, response} ->
         matches = response["matches"]
