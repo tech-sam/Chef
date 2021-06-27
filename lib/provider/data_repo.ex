@@ -8,6 +8,7 @@ defmodule Chef.DataProvider.DataRepo do
 
       {:error, changeset} ->
         IO.inspect(changeset.errors)
+        {:error, changeset.errors}
     end
   end
 end

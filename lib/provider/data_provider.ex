@@ -1,5 +1,6 @@
 defmodule Chef.DataProvider do
 
+  import Chef.Provider
   import Chef.ProviderArgsBuilder
 
   @providers Application.fetch_env!(:chef, :providers)
@@ -12,9 +13,4 @@ defmodule Chef.DataProvider do
     end)
     |> Enum.map(&Task.await/1)
   end
-
-  @doc """
-  Invoked the fetch match data process for a provider.
-  """
-  @callback fetch_match_data(args :: ProviderArgs.t()) :: term | {:error, String.t()}
 end
