@@ -37,8 +37,8 @@ defmodule Chef.DataProvider.FastBall do
 
   defp get_provider_endpoint(args) do
     if Map.has_key?(args, :last_checked_at),
-      do: "#{args.end_point}?last_checked_at=#{args.last_checked_at}",
-      else: args.end_point
+      do: "#{args.url}?last_checked_at=#{args.last_checked_at}",
+      else: args.url
   end
 
   def test(url) do

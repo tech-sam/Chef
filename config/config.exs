@@ -29,11 +29,14 @@ config :chef,
   providers: [
     %{
       provider: Chef.DataProvider.MatchBeam,
-      url: "http://forzaassignment.forzafootball.com:8080/feed/matchbeam"
+      params: %{url: "http://forzaassignment.forzafootball.com:8080/feed/matchbeam"}
     },
     %{
       provider: Chef.DataProvider.FastBall,
-      url: "http://forzaassignment.forzafootball.com:8080/feed/fastball"
+      params: %{
+        url: "http://forzaassignment.forzafootball.com:8080/feed/fastball",
+        last_checked_at: DateTime.to_unix(DateTime.utc_now())
+      }
     }
   ]
 

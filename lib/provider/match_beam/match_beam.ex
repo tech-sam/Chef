@@ -10,7 +10,7 @@ defmodule Chef.DataProvider.MatchBeam do
 
   @impl Chef.Provider
   def fetch_match_data(args) do
-    case HttpClient.get(args.end_point) do
+    case HttpClient.get(args.url) do
       {:ok, response} ->
         matches = response["matches"]
 
