@@ -47,17 +47,17 @@ defmodule ChefTest do
 
   defp build_fastball_match(data) do
     build()
-    |> teams(data["home_team"], data["away_team"])
+    |> teams(data)
     |> provider("FastBall")
-    |> created_at(data["created_at"])
-    |> kickoff_at(data["kickoff_at"])
+    |> created_at(data)
+    |> kickoff_at(data)
   end
 
   defp build_matchbeam_match(data) do
     build()
-    |> teams(data["teams"])
+    |> teams(data)
     |> provider("MatchBeam")
-    |> created_at(data["created_at"])
-    |> kickoff_at(data["kickoff_at"])
+    |> created_at(data)
+    |> kickoff_at(data)
   end
 end
