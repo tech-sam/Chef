@@ -2,6 +2,7 @@ defmodule Chef.MatchData do
   use Ecto.Schema
   @timestamps_opts [type: :utc_datetime]
 
+  # master table for home and away team with differnt properties
   schema "match_data" do
     field(:home_team, :string)
     field(:away_team, :string)
@@ -11,15 +12,17 @@ defmodule Chef.MatchData do
     timestamps()
   end
 
-  def changeset(match_data, params \\ %{}) do
-    match_data
-    |> Ecto.Changeset.cast(params, [:home_team, :away_team, :provider, :kickoff_at, :created_at])
-    |> Ecto.Changeset.validate_required([
+  def changeset(%__MODULE__{} = match_data, params \\ %{}) do
+    required_fields = [
       :home_team,
       :away_team,
       :provider,
       :kickoff_at,
       :created_at
-    ])
+    ]
+
+    match_data
+    |> Ecto.Changeset.cast(params, required_fields)
+    |> Ecto.Changeset.validate_required(required_fields)
   end
 end

@@ -1,6 +1,6 @@
 defmodule Chef.DataProvider.MatchBeam do
   require Logger
-  alias Chef.HttpClient, as: HttpClient
+  alias Chef.HttpClient
   import Chef.DataProvider.DataRepo
   import Chef.MatchDataBuilder
 
@@ -12,9 +12,9 @@ defmodule Chef.DataProvider.MatchBeam do
   def fetch_match_data(args) do
     case HttpClient.get(args.url) do
       {:ok, response} ->
-        matches = response["matches"]
+        matches = Map.fetch!(response, "matches")
 
-        Enum.map(matches, fn match ->
+         Enum.each(matches, fn match ->
           match
           |> build_match
           |> persist_match_data
@@ -27,9 +27,9 @@ defmodule Chef.DataProvider.MatchBeam do
 
   defp build_match(data) do
     build()
-    |> teams(data["teams"])
+    |> teams(data)
     |> provider(@provider)
-    |> created_at(data["created_at"])
-    |> kickoff_at(data["kickoff_at"])
+    |> created_at(data)
+    |> kickoff_at(data)
   end
 end

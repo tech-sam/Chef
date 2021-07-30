@@ -32,8 +32,8 @@ defmodule Chef.DataProvider.FastBall do
     build()
     |> teams(data["home_team"], data["away_team"])
     |> provider(@provider)
-    |> created_at(data["created_at"])
-    |> kickoff_at(data["kickoff_at"])
+    |> created_at(data)
+    |> kickoff_at(data)
   end
 
   defp get_provider_endpoint(args) do
