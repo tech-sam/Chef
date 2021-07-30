@@ -4,10 +4,13 @@ defmodule Chef.MatchDataBuilder do
   """
   def build, do: %Chef.MatchData{}
 
-  def teams(matchdata, home_team, away_team),
-    do: %{matchdata | home_team: home_team, away_team: away_team}
+  def teams(matchdata, %{"home_team" => _,"away_team" => _} = data) do
+    home_team =  Map.fetch!(data, "home_team")
+    away_team =  Map.fetch!(data, "away_team")
+    %{matchdata | home_team: home_team, away_team: away_team}
+end
 
-  def teams(matchdata, data) do
+  def teams(matchdata, %{"teams" => _} = data) do
     teams = Map.fetch!(data, "teams")
     [home_team, away_team] = String.split(teams, ~r/\s-\s/)
     %{matchdata | home_team: String.trim(home_team), away_team: String.trim(away_team)}
